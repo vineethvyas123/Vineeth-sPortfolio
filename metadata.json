@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Vineeth Vyasabhattu Portfolio",
+  "description": "Premium personal portfolio for Vineeth Kumar Vyasabhattu, AI-Powered Automation Architect specializing in modernizing Enterprise BPM with Agentic AI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
