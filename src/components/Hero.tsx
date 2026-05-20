@@ -4,22 +4,60 @@
  */
 
 import { motion } from "motion/react";
-import { ArrowRight, Bot, Cpu, Sparkles } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ArrowRight, Bot, Cpu, Sparkles, Mail, ShieldCheck, Zap, Server } from "lucide-react";
 import { PROFILE } from "../constants";
 
 export default function Hero() {
+  const [activeStep, setActiveStep] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % 4);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
+  const pipelineSteps = [
+    {
+      title: "Email Intake",
+      desc: "Inbound customer request is fetched, parsed, and scrubbed.",
+      icon: Mail,
+      subtext: "Extracting invoice context...",
+    },
+    {
+      title: "AI Orchestrator",
+      desc: "CrewAI router classifies intent and spins up dedicated agents.",
+      icon: Cpu,
+      subtext: "Routing tasks with LangChain...",
+    },
+    {
+      title: "Validator Agent",
+      desc: "Validates extraction accuracy and runs system integrity checks.",
+      icon: ShieldCheck,
+      subtext: "99.9% accuracy matching...",
+    },
+    {
+      title: "Decision Engine",
+      desc: "Triggers API calls to sync databases with Camunda, Appian & PEGA.",
+      icon: Zap,
+      subtext: "Action Committed. System Synced",
+    },
+  ];
+
   return (
-    <section id="hero" className="relative min-h-[90vh] flex items-center pt-24 pb-20 overflow-hidden bg-white">
+    <section id="hero" className="relative min-h-[95vh] flex items-center pt-28 pb-20 overflow-hidden bg-white">
       {/* Background Accents */}
       <div className="absolute top-0 left-0 w-full h-full bg-dot-pattern opacity-40 pointer-events-none" />
       <div className="absolute top-1/4 -right-20 w-96 h-96 bg-brand/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-brand/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center relative z-10">
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-16 items-center relative z-10">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="lg:col-span-7"
         >
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -31,112 +69,170 @@ export default function Hero() {
             <span className="label-caps !text-brand font-bold tracking-[0.3em]">The Future of Autonomy</span>
           </motion.div>
 
-          <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight mb-8 text-ink">
-            Architecting <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand to-brand/60">Agentic AI Workflows</span> <br />
-            for Enterprise.
+          <h1 className="text-4xl md:text-5xl lg:text-[62px] font-bold leading-[1.05] tracking-tight mb-8 text-[#0E0B3D]">
+            12 years of Enterprise BPM.<br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#2563EB] to-brand/70 font-extrabold pb-2 block sm:inline">
+              Now building the AI systems that replace it.
+            </span>
           </h1>
 
-          <p className="text-xl text-ink/50 max-w-xl mb-12 leading-relaxed font-medium">
-            Strategic Enterprise AI Architect &amp; BPM Automation Specialist specialized in bridging the gap between legacy enterprise systems and autonomous multi-agent coordination.
+          <p className="text-lg text-ink/50 max-w-xl mb-12 leading-relaxed font-medium">
+            Strategic Enterprise AI Architect &amp; BPM (PEGA, Appian, Camunda, Bonitasoft) Automation Specialist specialized in bridging the gap between legacy workflows and autonomous multi-agent systems.
           </p>
 
-          <div className="flex flex-wrap gap-6">
+          <div className="flex flex-wrap gap-6 mb-12">
             <motion.a
               href="#projects"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
               className="px-10 py-5 bg-ink text-paper rounded-2xl font-bold uppercase tracking-widest text-xs hover:bg-brand transition-all shadow-xl shadow-ink/10"
             >
               Explore Portfolio
             </motion.a>
             <motion.a
               href="#about"
-              whileHover={{ backgroundColor: "var(--color-ink)", color: "var(--color-paper)" }}
-              className="px-10 py-5 bg-transparent border-2 border-ink text-ink rounded-2xl font-bold uppercase tracking-widest text-xs transition-all"
+              whileHover={{ backgroundColor: "var(--color-brand)", color: "var(--color-paper)", borderColor: "var(--color-brand)" }}
+              className="px-10 py-5 bg-transparent border-2 border-ink text-ink rounded-2xl font-bold uppercase tracking-widest text-xs transition-colors"
             >
               Our Philosophy
             </motion.a>
           </div>
+
+          {/* Metrics Strip */}
+          <div className="pt-8 border-t border-line/30 grid grid-cols-3 gap-4 md:gap-8">
+            <div className="group">
+              <div className="text-2xl md:text-4xl font-extrabold text-[#2563EB] font-mono leading-none">45%</div>
+              <div className="text-[10px] md:text-xs font-bold uppercase text-ink/40 tracking-wider mt-2 group-hover:text-ink transition-colors">overhead reduced</div>
+            </div>
+            <div className="group">
+              <div className="text-2xl md:text-4xl font-extrabold text-[#2563EB] font-mono leading-none">60%</div>
+              <div className="text-[10px] md:text-xs font-bold uppercase text-ink/40 tracking-wider mt-2 group-hover:text-ink transition-colors">faster approvals</div>
+            </div>
+            <div className="group">
+              <div className="text-2xl md:text-4xl font-extrabold text-[#2563EB] font-mono leading-none">80%</div>
+              <div className="text-[10px] md:text-xs font-bold uppercase text-ink/40 tracking-wider mt-2 group-hover:text-ink transition-colors">inquiry automation</div>
+            </div>
+          </div>
         </motion.div>
 
-        <div className="relative hidden lg:block">
+        <div className="lg:col-span-5 relative">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-            className="relative"
+            className="w-full relative"
           >
-            <div className="modern-card p-1 aspect-square bg-white border-[1px] border-line shadow-2xl shadow-ink/5 overflow-hidden group">
-              <div className="absolute inset-0 bg-dot-pattern opacity-10 group-hover:opacity-20 transition-opacity" />
-              <div className="absolute inset-0 bg-radial-gradient(circle at center, var(--color-brand-10), transparent)" />
-              
-              <div className="h-full flex flex-col items-center justify-center relative z-10">
+            {/* Main Obsidian Pipeline Card Container */}
+            <div className="relative flex flex-col gap-6 w-full p-6 md:p-8 bg-[#0B0A1B] rounded-[32px] border border-white/5 shadow-2xl shadow-ink/20 overflow-hidden">
+              {/* Background Ambient Node Glows */}
+              <div className="absolute top-0 right-1/4 w-36 h-36 bg-[#2563EB]/15 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute bottom-0 left-1/4 w-36 h-36 bg-brand/15 rounded-full blur-3xl pointer-events-none" />
+
+              <div className="flex items-center justify-between border-b border-white/5 pb-4">
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                </div>
+                <div className="text-[9px] font-mono text-white/40 tracking-widest uppercase">Agent Pipeline Monitor</div>
+              </div>
+
+              {/* Pulsing Vertical Edge Path (Connecting Timeline Line) */}
+              <div className="absolute left-[47px] md:left-[55px] top-[140px] bottom-[110px] w-0.5 bg-white/5">
+                {/* Active scrolling stroke path animation */}
                 <motion.div
-                  animate={{ 
-                    scale: [1, 1.05, 1],
-                    rotate: [0, 5, 0, -5, 0]
+                  className="absolute w-full bg-gradient-to-b from-[#2563EB] to-[#0052FF]"
+                  initial={{ height: 0, top: 0 }}
+                  animate={{
+                    height: ["0%", "100%", "0%"],
+                    top: ["0%", "0%", "100%"]
                   }}
-                  transition={{ 
-                    duration: 8,
+                  transition={{
+                    duration: 2.5,
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
-                  className="mb-12"
-                >
-                  <div className="w-64 h-64 rounded-full border border-brand/10 p-8 flex items-center justify-center relative">
-                    <div className="absolute inset-0 rounded-full border border-brand/5 animate-ping duration-[3s]" />
-                    <div className="w-48 h-48 rounded-full bg-ink flex items-center justify-center shadow-2xl shadow-brand/20 relative z-10 overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-tr from-brand/20 to-transparent pointer-events-none" />
-                      <Bot size={80} className="text-brand" />
-                    </div>
-                  </div>
-                </motion.div>
-                
-                <div className="text-center px-12">
-                  <div className="text-sm font-bold uppercase tracking-[0.4em] text-ink/30 mb-4">System Visualization</div>
-                  <div className="text-3xl font-bold text-ink mb-2 tracking-tight">Agentic Mesh</div>
-                  <div className="text-[10px] font-mono text-brand font-bold tracking-widest uppercase py-1 px-3 bg-brand/5 rounded-full inline-block">Status: Multi-Chain Active</div>
-                </div>
+                  style={{ filter: "drop-shadow(0 0 4px #2563EB)" }}
+                />
               </div>
 
-              {/* Data Accents */}
-              <div className="absolute top-12 left-12">
-                <div className="label-caps !text-ink/20 mb-1">Process Rate</div>
-                <div className="text-ink font-mono text-xs">1,240 ops/s</div>
+              {/* Steps Layout */}
+              <div className="flex flex-col gap-4 relative z-10">
+                {pipelineSteps.map((step, idx) => {
+                  const Icon = step.icon;
+                  const isActive = activeStep === idx;
+                  return (
+                    <div
+                      key={step.title}
+                      className={`flex items-start gap-4 md:gap-5 p-3.5 rounded-2xl border transition-all duration-500 ${
+                        isActive
+                          ? "bg-white/[0.04] border-white/10 shadow-lg shadow-black/40 scale-[1.02]"
+                          : "border-transparent opacity-40 hover:opacity-60"
+                      }`}
+                    >
+                      {/* Left icon bubble indicator */}
+                      <div
+                        className={`w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 ${
+                          isActive
+                            ? "bg-[#2563EB] text-white shadow-[0_0_15px_rgba(37,99,235,0.4)]"
+                            : "bg-white/5 text-white/50"
+                        }`}
+                      >
+                        <Icon size={18} className={isActive ? "animate-pulse" : ""} />
+                      </div>
+
+                      {/* Info label */}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between gap-2">
+                          <h3
+                            className={`text-sm font-semibold tracking-tight transition-colors ${
+                              isActive ? "text-white" : "text-white/60"
+                            }`}
+                          >
+                            {step.title}
+                          </h3>
+                          {isActive && (
+                            <span className="flex h-2 w-2 relative">
+                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2563EB] opacity-75"></span>
+                              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#2563EB]"></span>
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-[11px] text-white/40 leading-relaxed font-medium mt-1 truncate">
+                          {step.desc}
+                        </p>
+                        
+                        {isActive && (
+                          <motion.p
+                            initial={{ opacity: 0, x: -5 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            className="text-[10px] text-[#2563EB] font-mono mt-1.5 font-bold"
+                          >
+                            Status: {step.subtext}
+                          </motion.p>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-              <div className="absolute bottom-12 right-12 text-right">
-                <div className="label-caps !text-ink/20 mb-1">Integrity</div>
-                <div className="text-brand font-mono text-xs">99.99%</div>
+
+              {/* Data and throughput indicators */}
+              <div className="flex items-center justify-between border-t border-white/5 pt-4 text-[10px] font-mono text-white/30">
+                <div className="flex items-center gap-1.5">
+                  <Server size={10} />
+                  <span>Pipeline Latency: <strong className="text-white/50 font-bold">142ms</strong></span>
+                </div>
+                <span>Status: <strong className="text-emerald-400 font-bold">RUNNING</strong></span>
               </div>
             </div>
-          </motion.div>
 
-          {/* Architectural Framing */}
-          <div className="absolute -top-10 -right-10 w-40 h-40 border-r border-t border-line" />
-          <div className="absolute -bottom-10 -left-10 w-40 h-40 border-l border-b border-line" />
+            {/* Architectural Frame Corners */}
+            <div className="absolute -top-10 -right-10 w-40 h-40 border-r border-t border-line pointer-events-none hidden md:block" />
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 border-l border-b border-line pointer-events-none hidden md:block" />
+          </motion.div>
         </div>
       </div>
     </section>
-  );
-}
-
-function Workflow({ size, className }: { size: number; className?: string }) {
-  return (
-    <svg 
-      width={size} 
-      height={size} 
-      viewBox="0 0 24 24" 
-      fill="none" 
-      stroke="currentColor" 
-      strokeWidth="2" 
-      strokeLinecap="round" 
-      strokeLinejoin="round" 
-      className={className}
-    >
-      <rect width="8" height="8" x="3" y="3" rx="2" />
-      <path d="M7 11v4a2 2 0 0 0 2 2h4" />
-      <rect width="8" height="8" x="13" y="13" rx="2" />
-    </svg>
   );
 }

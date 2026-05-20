@@ -17,7 +17,14 @@ const icons: Record<IconType, any> = {
 
 export default function Expertise() {
   return (
-    <section id="expertise" className="bg-white">
+    <motion.section 
+      id="expertise" 
+      className="bg-[#F7F7F5]"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+    >
       <div className="section-container !pt-4">
         <div className="mb-10">
           <motion.div
@@ -76,6 +83,6 @@ export default function Expertise() {
           })}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

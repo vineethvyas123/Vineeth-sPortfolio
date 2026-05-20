@@ -35,7 +35,7 @@ export default function App() {
                 <div className="aspect-[4/5] bg-paper rounded-[40px] overflow-hidden border border-line relative z-10 group shadow-2xl shadow-ink/5">
                   <img 
                     src={PROFILE.profileImage} 
-                    alt="Vineeth Kumar Vyasabhattu - Enterprise AI &amp; BPM Automation Architect"
+                    alt="Vineeth Kumar Vyasabhattu - Enterprise AI &amp; BPM (PEGA, Appian, Camunda, Bonitasoft) Automation Architect"
                     loading="lazy"
                     className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000 grayscale hover:grayscale-0"
                     referrerPolicy="no-referrer"
@@ -63,16 +63,16 @@ export default function App() {
                   </h2>
                   <div className="space-y-6 text-xl text-ink/60 leading-relaxed font-medium">
                     <p>
-                      With over a decade of deep involvement in Enterprise Java and industry-leading BPM platforms like PEGA and Appian, I have seen the evolution of business processes firsthand.
+                      With over a decade of deep involvement in Enterprise Java and industry-leading BPM suites like PEGA, Appian, Camunda, and Bonitasoft, I have seen the evolution of business processes firsthand.
                     </p>
                     <p>
                       Today, the landscape is shifting from rigid, pre-defined workflows to fluid, autonomous agentic systems. My focus is on architecting this transition—leveraging multi-agent orchestration, RAG architectures, and enterprise LLM integration to build the next generation of cognitive automation.
                     </p>
                     
                     <div className="pt-8 grid sm:grid-cols-2 gap-8 border-t border-line mt-8">
-                      <div className="group">
+                       <div className="group">
                         <div className="text-sm font-bold text-ink mb-2 uppercase tracking-widest group-hover:text-brand transition-colors">Modernize</div>
-                        <p className="text-sm text-ink/50 leading-relaxed">Transforming legacy BPM architectures into AI-native workflows through intelligent orchestration.</p>
+                        <p className="text-sm text-ink/50 leading-relaxed">Transforming legacy BPM architectures (PEGA, Appian, Camunda, Bonitasoft) into AI-native workflows through intelligent orchestration.</p>
                       </div>
                       <div className="group">
                         <div className="text-sm font-bold text-ink mb-2 uppercase tracking-widest group-hover:text-brand transition-colors">Scale</div>

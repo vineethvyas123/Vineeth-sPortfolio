@@ -9,7 +9,14 @@ import { PROJECTS } from "../constants";
 
 export default function Projects() {
   return (
-    <section id="projects" className="bg-paper bg-dot-pattern">
+    <motion.section 
+      id="projects" 
+      className="bg-paper bg-dot-pattern"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+    >
       <div className="section-container !pt-4">
         <div className="mb-10">
           <motion.div
@@ -20,7 +27,7 @@ export default function Projects() {
           >
             Portfolio
           </motion.div>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight">Featured Case Studies</h2>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-[#0E0B3D]">Featured Case Studies</h2>
         </div>
 
         <div className="grid gap-12">
@@ -31,7 +38,7 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group modern-card bg-white p-0 overflow-hidden grid lg:grid-cols-12 min-h-[400px]"
+              className="group modern-card bg-white p-0 overflow-hidden grid lg:grid-cols-12 min-h-[400px] hover:translate-y-[-4px] hover:shadow-xl transition-all duration-500 border border-line/15"
             >
               <div className="lg:col-span-7 p-8 md:p-12 flex flex-col justify-center">
                 <div className="flex items-center space-x-4 mb-6">
@@ -96,6 +103,6 @@ export default function Projects() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
