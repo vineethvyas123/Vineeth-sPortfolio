@@ -9,7 +9,7 @@ import { PROFILE } from "../constants";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center pt-24 pb-20 overflow-hidden bg-white">
+    <section id="hero" className="relative min-h-[90vh] flex items-center pt-24 pb-20 overflow-hidden bg-white">
       {/* Background Accents */}
       <div className="absolute top-0 left-0 w-full h-full bg-dot-pattern opacity-40 pointer-events-none" />
       <div className="absolute top-1/4 -right-20 w-96 h-96 bg-brand/5 rounded-full blur-[120px] pointer-events-none" />
@@ -33,12 +33,12 @@ export default function Hero() {
 
           <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight mb-8 text-ink">
             Architecting <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand to-brand/60">Autonomous AI</span> <br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand to-brand/60">Agentic AI Workflows</span> <br />
             for Enterprise.
           </h1>
 
           <p className="text-xl text-ink/50 max-w-xl mb-12 leading-relaxed font-medium">
-            Strategic AI Technologist specialized in bridging the gap between legacy enterprise workflows and adaptive, multi-agent intelligence.
+            Strategic Enterprise AI Architect &amp; BPM Automation Specialist specialized in bridging the gap between legacy enterprise systems and autonomous multi-agent coordination.
           </p>
 
           <div className="flex flex-wrap gap-6">

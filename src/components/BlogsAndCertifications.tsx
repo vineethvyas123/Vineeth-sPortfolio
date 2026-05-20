@@ -9,7 +9,7 @@ import { CERTIFICATIONS, BLOGS } from "../constants";
 
 export default function BlogsAndCertifications() {
   return (
-    <section className="bg-paper/50">
+    <section id="leadership" className="bg-paper/50">
       <div className="section-container !pt-4 grid md:grid-cols-2 gap-16">
         {/* Certifications */}
         <div>

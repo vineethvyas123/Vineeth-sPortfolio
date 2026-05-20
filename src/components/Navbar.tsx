@@ -35,7 +35,7 @@ export default function Navbar() {
   ];
 
   return (
-    <>
+    <header>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled ? "bg-paper/80 backdrop-blur-md border-b border-line py-3" : "bg-transparent py-5"
@@ -52,7 +52,7 @@ export default function Navbar() {
               V
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-sm font-bold tracking-tight leading-none text-ink uppercase">Vineeth Kumar</h1>
+              <strong className="text-sm font-bold tracking-tight leading-none text-ink uppercase block">Vineeth Kumar</strong>
               <p className="label-caps !text-[8px] mt-0.5">Agentic AI Architect</p>
             </div>
           </motion.a>
@@ -155,6 +155,6 @@ export default function Navbar() {
           </div>
         </motion.div>
       )}
-    </>
+    </header>
   );
 }

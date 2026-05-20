@@ -35,7 +35,8 @@ export default function App() {
                 <div className="aspect-[4/5] bg-paper rounded-[40px] overflow-hidden border border-line relative z-10 group shadow-2xl shadow-ink/5">
                   <img 
                     src={PROFILE.profileImage} 
-                    alt={PROFILE.name}
+                    alt="Vineeth Kumar Vyasabhattu - Enterprise AI &amp; BPM Automation Architect"
+                    loading="lazy"
                     className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000 grayscale hover:grayscale-0"
                     referrerPolicy="no-referrer"
                   />

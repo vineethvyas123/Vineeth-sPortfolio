@@ -13,7 +13,7 @@ export default function Contact() {
   };
 
   return (
-    <footer id="contact" className="relative pt-20 pb-12 overflow-hidden bg-white">
+    <section id="contact" className="relative pt-20 pb-12 overflow-hidden bg-white">
       <div className="absolute top-0 left-0 right-0 h-px bg-line" />
       
       <div className="section-container">
@@ -121,9 +121,9 @@ export default function Contact() {
           </motion.div>
         </div>
 
-        <div className="pt-16 border-t border-line flex flex-col md:flex-row justify-between items-center gap-10">
+        <footer className="pt-16 border-t border-line flex flex-col md:flex-row justify-between items-center gap-10">
           <div className="flex flex-col items-center md:items-start">
-            <div className="text-2xl font-bold tracking-tighter mb-2 uppercase italic">
+            <div className="text-2xl font-bold tracking-tighter mb-2 uppercase italic flex items-center">
               VINEETH<span className="text-brand">.</span>
             </div>
             <p className="text-ink/40 text-xs font-bold uppercase tracking-widest">© 2026 {PROFILE.name}</p>
@@ -132,17 +132,18 @@ export default function Contact() {
           <div className="flex space-x-10">
             <a href="#" className="text-ink/40 hover:text-ink transition-colors text-xs font-bold uppercase tracking-widest">Privacy</a>
             <a href="#" className="text-ink/40 hover:text-ink transition-colors text-xs font-bold uppercase tracking-widest">Terms</a>
-            <a href="#" className="text-ink/40 hover:text-ink transition-colors text-xs font-bold uppercase tracking-widest">Sitemap</a>
+            <a href="#leadership" className="text-ink/40 hover:text-ink transition-colors text-xs font-bold uppercase tracking-widest">Sitemap</a>
           </div>
 
           <button 
             onClick={scrollToTop}
+            aria-label="Scroll to top of the page"
             className="p-5 rounded-full border border-line hover:bg-ink hover:text-paper group transition-all"
           >
             <ArrowUp size={20} className="group-hover:-translate-y-1 transition-transform" />
           </button>
-        </div>
+        </footer>
       </div>
-    </footer>
+    </section>
   );
 }
