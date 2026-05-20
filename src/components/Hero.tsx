@@ -52,12 +52,12 @@ export default function Hero() {
       <div className="absolute top-1/4 -right-20 w-96 h-96 bg-brand/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-brand/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-16 items-center relative z-10">
+      <div className="w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-7"
+          className="w-full lg:col-span-7 min-w-0"
         >
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -69,53 +69,53 @@ export default function Hero() {
             <span className="label-caps !text-brand font-bold tracking-[0.3em]">The Future of Autonomy</span>
           </motion.div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-[46px] xl:text-[54px] font-bold leading-[1.1] tracking-tight mb-8 text-[#0E0B3D]">
-            <span className="block lg:whitespace-nowrap">12 years of Enterprise BPM.</span>
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#2563EB] to-brand/70 font-extrabold pb-2 block mt-2 sm:mt-0 sm:inline">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[46px] xl:text-[54px] font-bold leading-[1.15] tracking-tight mb-8 text-[#0E0B3D]">
+            <span className="block lg:whitespace-nowrap break-words">12 years of Enterprise BPM.</span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#2563EB] to-brand/70 font-extrabold pb-2 block mt-2 sm:mt-0 sm:inline line-clamp-none whitespace-normal">
               Now building the AI systems that replace it.
             </span>
           </h1>
 
-          <p className="text-lg text-ink/50 max-w-xl mb-12 leading-relaxed font-medium">
+          <p className="text-base sm:text-lg text-ink/50 max-w-xl mb-12 leading-relaxed font-medium">
             Strategic Enterprise AI Architect &amp; BPM (PEGA, Appian, Camunda, Bonitasoft) Automation Specialist specialized in bridging the gap between legacy workflows and autonomous multi-agent systems.
           </p>
 
-          <div className="flex flex-wrap gap-6 mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 mb-12">
             <motion.a
               href="#projects"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
-              className="px-10 py-5 bg-ink text-paper rounded-2xl font-bold uppercase tracking-widest text-xs hover:bg-brand transition-all shadow-xl shadow-ink/10"
+              className="px-6 py-4 sm:px-10 sm:py-5 bg-ink text-paper rounded-2xl font-bold uppercase tracking-widest text-[10px] sm:text-xs hover:bg-brand transition-all shadow-xl shadow-ink/10 text-center"
             >
               Explore Portfolio
             </motion.a>
             <motion.a
               href="#about"
               whileHover={{ backgroundColor: "var(--color-brand)", color: "var(--color-paper)", borderColor: "var(--color-brand)" }}
-              className="px-10 py-5 bg-transparent border-2 border-ink text-ink rounded-2xl font-bold uppercase tracking-widest text-xs transition-colors"
+              className="px-6 py-4 sm:px-10 sm:py-5 bg-transparent border-2 border-ink text-ink rounded-2xl font-bold uppercase tracking-widest text-[10px] sm:text-xs transition-colors text-center"
             >
               Our Philosophy
             </motion.a>
           </div>
 
           {/* Metrics Strip */}
-          <div className="pt-8 border-t border-line/30 grid grid-cols-3 gap-4 md:gap-8">
+          <div className="pt-8 border-t border-line/30 grid grid-cols-3 gap-2 sm:gap-6 md:gap-8">
             <div className="group">
-              <div className="text-2xl md:text-4xl font-extrabold text-[#2563EB] font-mono leading-none">45%</div>
-              <div className="text-[10px] md:text-xs font-bold uppercase text-ink/40 tracking-wider mt-2 group-hover:text-ink transition-colors">overhead reduced</div>
+              <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#2563EB] font-mono leading-none">45%</div>
+              <div className="text-[8px] sm:text-[10px] md:text-xs font-bold uppercase text-ink/40 tracking-wider mt-2 group-hover:text-ink transition-colors">overhead reduced</div>
             </div>
             <div className="group">
-              <div className="text-2xl md:text-4xl font-extrabold text-[#2563EB] font-mono leading-none">60%</div>
-              <div className="text-[10px] md:text-xs font-bold uppercase text-ink/40 tracking-wider mt-2 group-hover:text-ink transition-colors">faster approvals</div>
+              <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#2563EB] font-mono leading-none">60%</div>
+              <div className="text-[8px] sm:text-[10px] md:text-xs font-bold uppercase text-ink/40 tracking-wider mt-2 group-hover:text-ink transition-colors">faster approvals</div>
             </div>
             <div className="group">
-              <div className="text-2xl md:text-4xl font-extrabold text-[#2563EB] font-mono leading-none">80%</div>
-              <div className="text-[10px] md:text-xs font-bold uppercase text-ink/40 tracking-wider mt-2 group-hover:text-ink transition-colors">inquiry automation</div>
+              <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#2563EB] font-mono leading-none">80%</div>
+              <div className="text-[8px] sm:text-[10px] md:text-xs font-bold uppercase text-ink/40 tracking-wider mt-2 group-hover:text-ink transition-colors">inquiry automation</div>
             </div>
           </div>
         </motion.div>
 
-        <div className="lg:col-span-5 relative">
+        <div className="w-full lg:col-span-5 relative">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
