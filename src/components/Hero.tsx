@@ -69,9 +69,9 @@ export default function Hero() {
             <span className="label-caps !text-brand font-bold tracking-[0.3em]">The Future of Autonomy</span>
           </motion.div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-[62px] font-bold leading-[1.05] tracking-tight mb-8 text-[#0E0B3D]">
-            12 years of Enterprise BPM.<br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#2563EB] to-brand/70 font-extrabold pb-2 block sm:inline">
+          <h1 className="text-3xl sm:text-4xl lg:text-[46px] xl:text-[54px] font-bold leading-[1.1] tracking-tight mb-8 text-[#0E0B3D]">
+            <span className="block lg:whitespace-nowrap">12 years of Enterprise BPM.</span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#2563EB] to-brand/70 font-extrabold pb-2 block mt-2 sm:mt-0 sm:inline">
               Now building the AI systems that replace it.
             </span>
           </h1>
