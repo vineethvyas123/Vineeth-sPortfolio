@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- Premium Obsidian Dark Background -->
+  <rect width="512" height="512" rx="140" fill="#0A0A0A" />
+  
+  <!-- Subtle Outer Brand Orbit Ring -->
+  <circle cx="256" cy="256" r="236" fill="none" stroke="#0052FF" stroke-width="6" stroke-opacity="0.25" />
+  
+  <!-- Monogram VK Group -->
+  <g transform="translate(48, 48)">
+    <!-- Letter V (Left and middle diagonal) -->
+    <!-- Starts top-left, dips to the bottom center-left, and climbs to meet K's spine -->
+    <path d="M 60,110 L 160,310 L 260,110" fill="none" stroke="#F5F5F4" stroke-width="44" stroke-linecap="round" stroke-linejoin="round" />
+    
+    <!-- Letter K (Vertical spine, shared with the right vertex of V) -->
+    <!-- Drawn in high-visibility Brand Electric Blue for dynamic contrast -->
+    <path d="M 260,110 L 260,310" fill="none" stroke="#0052FF" stroke-width="44" stroke-linecap="round" />
+    
+    <!-- Letter K Upper Diagonal Branch -->
+    <path d="M 260,210 L 350,110" fill="none" stroke="#0052FF" stroke-width="44" stroke-linecap="round" stroke-linejoin="round" />
+    
+    <!-- Letter K Lower Diagonal Branch -->
+    <!-- Drawn in Silver to balance the V leg and ground the composition -->
+    <path d="M 270,200 L 350,310" fill="none" stroke="#F5F5F4" stroke-width="44" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>
