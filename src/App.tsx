@@ -10,6 +10,7 @@ import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import TechStack from "./components/TechStack";
 import BlogsAndCertifications from "./components/BlogsAndCertifications";
+import Writing from "./components/Writing";
 import Contact from "./components/Contact";
 import { motion } from "motion/react";
 import { PROFILE } from "./constants";
@@ -91,6 +92,7 @@ export default function App() {
         <Projects />
         <TechStack />
         <BlogsAndCertifications />
+        <Writing />
       </main>
 
       <Contact />
