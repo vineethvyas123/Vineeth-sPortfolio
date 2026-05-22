@@ -32,45 +32,36 @@ export default function Writing() {
   return (
     <motion.section
       id="writing"
-      className="bg-[#F7F7F5] border-t border-b border-line/10 pt-4 pb-12 md:pt-6 md:pb-16"
+      className="bg-[#030307] border-b border-white/5 py-12 md:py-16"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className="section-container !pt-0">
-        <div className="mb-10">
+      <div className="max-w-7xl mx-auto px-6">
+        
+        {/* Section Header */}
+        <div className="mb-8">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="label-caps mb-2 fade-in"
+            className="section-label mb-4"
           >
             Thought Leadership
           </motion.div>
           
-          <motion.h2 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold tracking-tight text-[#0E0B3D] fade-in"
-          >
-            Published <span className="text-ink/30 italic">Writing</span>
-          </motion.h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
+            Published <span className="font-sans italic text-slate-400 font-normal">Writing</span>
+          </h2>
 
-          <motion.p 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-ink/60 mt-4 text-base sm:text-lg md:text-xl font-medium max-w-3xl leading-relaxed fade-in"
-          >
+          <p className="font-sans text-slate-400 text-sm md:text-base max-w-2xl leading-relaxed mt-4">
             Technical articles from the field — practical guides built from real enterprise delivery experience on BPM platforms.
-          </motion.p>
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        {/* 2-Column Grid of published items */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
           {ARTICLES.map((article, index) => {
             const isDelay = index === 1 || index === 3;
             return (
@@ -82,34 +73,38 @@ export default function Writing() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -3, scale: 1.02 }}
+                whileHover={{ y: -4, borderColor: "#3b82f6", scale: 1.01, boxShadow: "0 0 24px rgba(59, 130, 246, 0.15)" }}
                 transition={{ 
                   duration: 0.6, 
                   ease: [0.16, 1, 0.3, 1], 
-                  delay: isDelay ? 0.1 : 0 
+                  delay: isDelay ? 0.08 : 0 
                 }}
-                className={`group block p-6 md:p-8 modern-card bg-white border border-line/10 hover:border-brand/35 transition-all duration-300 shadow-sm ${
-                  isDelay ? "fade-in fade-in-delay-1" : "fade-in"
-                }`}
+                className="group block p-6 md:p-8 rounded-2xl border border-white/5 bg-white/[0.01] transition-all duration-300"
               >
                 <div className="flex flex-col h-full justify-between">
                   <div>
-                    <span className="font-mono uppercase text-[10px] sm:text-xs tracking-wider text-ink/40 mb-3 block">
+                    {/* Source label */}
+                    <span className="font-mono uppercase text-[10px] sm:text-xs tracking-[0.16em] text-slate-400/60 mb-3.5 block">
                       {article.platform}
                     </span>
-                    <h3 className="text-[15px] font-medium text-indigo-600 leading-relaxed mb-4 block group-hover:text-indigo-800 transition-colors">
+                    
+                    {/* Article title */}
+                    <h3 className="font-sans text-[15px] sm:text-[17px] font-bold text-[#3b82f6] group-hover:text-blue-400 leading-relaxed mb-4 block transition-colors duration-200">
                       {article.title}
                     </h3>
                   </div>
-                  <div className="text-ink/45 flex items-center gap-1 group-hover:text-brand transition-colors font-bold uppercase tracking-wider text-[10px] mt-4">
-                    <span>Read article</span>
-                    <span className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+
+                  {/* READ ARTICLE Action cue */}
+                  <div className="text-white/40 flex items-center gap-1.5 group-hover:text-[#3b82f6] transition-colors font-mono uppercase tracking-[0.16em] text-[10px] mt-4 font-bold">
+                    <span>READ ARTICLE</span>
+                    <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
                   </div>
                 </div>
               </motion.a>
             );
           })}
         </div>
+
       </div>
     </motion.section>
   );

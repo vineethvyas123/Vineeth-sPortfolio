@@ -4,91 +4,114 @@
  */
 
 import { motion } from "motion/react";
-import { Briefcase, MapPin, Calendar, ArrowRight } from "lucide-react";
+import { MapPin, Calendar, ChevronRight } from "lucide-react";
 import { EXPERIENCE } from "../constants";
 
 export default function Experience() {
   return (
-    <motion.section 
+    <section 
       id="experience" 
-      className="bg-white relative overflow-hidden"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="bg-[#030307] py-12 relative overflow-hidden text-white"
     >
-      <div className="section-container !pt-4">
-        <div className="mb-12">
+      <div className="max-w-4xl mx-auto px-6">
+        
+        {/* Section Header */}
+        <div className="mb-8">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="label-caps mb-2"
+            className="section-label mb-4"
           >
             History
           </motion.div>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-[#0E0B3D]">Work Experience</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
+            Work <span className="font-sans italic text-slate-400 font-normal">Experience</span>
+          </h2>
         </div>
 
-        <div className="space-y-8">
-          {EXPERIENCE.map((exp, index) => {
-            const outcomeMetric = 
-              index === 0 ? "↓ 45% Overhead Reduced" 
-              : index === 1 ? "↓ 60% approval cycles" 
-              : "↓ 3x faster delivery";
+        {/* Timeline single-column rail wrapper */}
+        <div className="relative pl-8 md:pl-12 border-l border-gradient-to-b from-[#3b82f6] to-transparent border-white/5">
+          {/* Custom continuous vertical timeline rail line */}
+          <div className="absolute left-0 top-3 bottom-0 w-[2px] bg-gradient-to-b from-[#3b82f6] via-[#3b82f6]/50 to-transparent pointer-events-none" />
 
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="modern-card p-6 md:p-10 bg-white border border-line/10 hover:border-brand/30 hover:shadow-xl transition-all duration-500 flex flex-col gap-6"
-              >
-                {/* Header info */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-line/10 pb-6">
-                  <div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-[#0E0B3D] tracking-tighter">{exp.company}</h3>
-                    <div className="flex items-center space-x-2 text-ink/40 mt-1.5 uppercase text-[10px] tracking-widest font-bold">
-                      <MapPin size={13} className="text-[#2563EB] shrink-0" />
-                      <span>{exp.location}</span>
+          <div className="space-y-12">
+            {EXPERIENCE.map((exp, index) => {
+              const outcomeMetric = 
+                index === 0 ? "↓ 45% OVERHEAD REDUCED" 
+                : index === 1 ? "↓ 60% APPROVAL CYCLES" 
+                : "↓ 3X FASTER DELIVERY";
+
+              return (
+                <div key={index} className="relative group">
+                  
+                  {/* Timeline connector circle dot on rail (left) */}
+                  <div className="absolute left-[-37px] md:left-[-53px] top-[8px] w-4 h-4 rounded-full bg-[#3b82f6] border-2 border-[#030307] ring-4 ring-[#3b82f6]/20 group-hover:scale-125 transition-transform duration-300 z-10" />
+
+                  {/* Header metadata Grid */}
+                  <div className="flex flex-col gap-4 mb-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                      
+                      {/* Name + link */}
+                      <a 
+                        href="#contact" 
+                        className="text-xl sm:text-2xl font-display font-bold text-white hover:text-[#3b82f6] transition-colors duration-200"
+                      >
+                        {exp.company}
+                      </a>
+
+                      {/* Right impact metric */}
+                      <div className="text-xs font-mono font-bold text-[#fbbf24] tracking-widest sm:text-right">
+                        {outcomeMetric}
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-slate-400 font-mono text-xs">
+                      
+                      {/* Role Pill Badge */}
+                      <span className="px-3 py-1 rounded bg-white/[0.03] border border-white/5 font-mono text-[10px] text-[#3b82f6] font-bold tracking-widest uppercase">
+                        [{exp.role}]
+                      </span>
+
+                      {/* Location details */}
+                      <div className="flex items-center gap-1 text-[11px] font-mono text-slate-400">
+                        <MapPin size={11} className="text-[#3b82f6]" />
+                        <span>{exp.location}</span>
+                      </div>
+
+                      {/* Period Badge */}
+                      <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-400 sm:ml-auto">
+                        <Calendar size={11} className="text-[#fbbf24]" />
+                        <span>{exp.period}</span>
+                      </div>
                     </div>
                   </div>
-                  
-                  <div className="flex items-center space-x-2 px-3.5 py-1.5 bg-paper rounded-xl border border-line/10 font-mono text-[10px] font-bold uppercase tracking-wider text-ink/60 h-fit w-fit">
-                    <Calendar size={12} className="text-[#2563EB]" />
-                    <span>{exp.period}</span>
-                  </div>
+
+                  {/* Bullets mapping */}
+                  <ul className="space-y-3 pl-1">
+                    {exp.highlights.map((point, i) => (
+                      <motion.li 
+                        key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.5, delay: i * 0.08 }}
+                        className="flex items-start gap-2 text-sm md:text-[15px] font-sans text-slate-400 leading-relaxed hover:text-[#f8fafc] transition-colors duration-200"
+                      >
+                        <ChevronRight size={16} className="text-[#3b82f6] shrink-0 mt-1" />
+                        <span>{point}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+
                 </div>
+              );
+            })}
+          </div>
 
-                {/* Subheader credentials */}
-                <div className="flex flex-row flex-wrap items-center justify-between gap-4">
-                  <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-[#0E0B3D] text-white text-[10px] font-bold uppercase tracking-widest border border-white/5 shadow-sm">
-                    <Briefcase size={12} className="text-[#2563EB]" />
-                    <span>{exp.role}</span>
-                  </div>
-
-                  <div className="inline-flex items-center bg-[#2563EB]/5 border border-[#2563EB]/15 text-[#2563EB] px-4 py-2 rounded-xl font-mono text-[10px] font-bold uppercase tracking-widest">
-                    {outcomeMetric}
-                  </div>
-                </div>
-
-                {/* Bullets with inline markers */}
-                <ul className="space-y-4 pt-2">
-                  {exp.highlights.map((point, i) => (
-                    <li key={i} className="flex items-start space-x-3.5 text-sm font-medium text-ink/65 leading-relaxed">
-                      <ArrowRight size={15} className="text-[#2563EB] shrink-0 mt-1" />
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            );
-          })}
         </div>
+
       </div>
-    </motion.section>
+    </section>
   );
 }

@@ -4,12 +4,15 @@
  */
 
 import { motion } from "motion/react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Mail, Linkedin, MapPin, Send, ArrowUp, Github } from "lucide-react";
 import { PROFILE } from "../constants";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
+  const [formState, setFormState] = useState({ name: "", email: "", inquiry: "Consulting", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const copyEmail = () => {
     navigator.clipboard.writeText(PROFILE.email);
@@ -17,200 +20,319 @@ export default function Contact() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
+      setFormState({ name: "", email: "", inquiry: "Consulting", message: "" });
+      setTimeout(() => setSubmitSuccess(false), 3000);
+    }, 1500);
+  };
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <motion.section 
+    <section 
       id="contact" 
-      className="relative pt-20 overflow-hidden bg-white"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="bg-[#030307] pt-12 border-t border-white/5 relative overflow-hidden text-white"
     >
-      <div className="absolute top-0 left-0 right-0 h-px bg-line" />
-      
-      <div className="section-container pb-20">
-        <div className="grid lg:grid-cols-2 gap-16">
-          <div>
+      <div className="max-w-7xl mx-auto px-6 pb-12">
+        
+        {/* Contact Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          {/* LEFT: Connect text and icons (58% / lg:col-span-7) */}
+          <div className="lg:col-span-7">
             <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="text-5xl md:text-7xl font-bold mb-8 tracking-tighter leading-[0.95] text-[#0E0B3D]"
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="text-4xl sm:text-5xl md:text-[56px] font-display font-bold mb-6 tracking-tight leading-[1.05]"
             >
-              Let’s build <span className="text-[#2563EB]">AI-powered</span> enterprises together.
+              Let’s build <span className="text-shimmer">AI-powered</span> enterprises together.
             </motion.h2>
-            
-            <div className="space-y-8">
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              
+              {/* Email item with Copy */}
               <div 
                 onClick={copyEmail}
-                className="flex items-center space-x-6 group cursor-pointer relative"
+                className="flex items-center gap-4 group cursor-pointer relative"
                 title="Click to copy email address"
               >
-                <div className="p-5 rounded-2xl bg-paper border border-line group-hover:bg-[#0E0B3D] group-hover:text-paper transition-all duration-500 shrink-0">
-                  <Mail size={24} />
+                {/* Square Icon transitions to cobalt block on hover */}
+                <div className="w-14 h-14 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-center text-[#3b82f6] group-hover:bg-[#3b82f6] group-hover:text-white group-hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] transition-all duration-300 shrink-0">
+                  <Mail size={22} />
                 </div>
-                <div className="relative">
-                  <div className="label-caps mb-1 flex items-center gap-2">
-                    <span>Email Me</span>
-                    <span className="text-[9px] text-[#2563EB] lowercase font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
-                      (click to copy)
-                    </span>
+                <div className="min-w-0">
+                  <div className="font-mono text-[9px] text-slate-400 tracking-widest uppercase mb-1">
+                    Email Address <span className="text-xs text-[#3b82f6] lowercase opacity-0 group-hover:opacity-100 transition-opacity">· copy</span>
                   </div>
-                  <span className="text-xl sm:text-2xl font-bold tracking-tight hover:text-[#2563EB] transition-colors text-ink block break-all">
+                  <span className="font-display font-bold text-sm sm:text-[15px] text-white group-hover:text-[#3b82f6] transition-colors block truncate">
                     {PROFILE.email}
                   </span>
+                </div>
 
-                  {/* Tooltip */}
-                  {copied && (
-                    <motion.div 
-                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      className="absolute left-0 -top-10 bg-[#2563EB] text-white text-[10px] font-bold py-1.5 px-3 rounded-lg shadow-md z-20 pointer-events-none font-mono"
-                    >
-                      Copied email!
-                    </motion.div>
-                  )}
+                {/* Copied check bubble */}
+                {copied && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    className="absolute left-1/2 -top-12 -translate-x-1/2 bg-[#3b82f6] text-white text-[10px] font-mono font-bold py-1.5 px-3 rounded-lg shadow-xl z-20 pointer-events-none"
+                  >
+                    COPIED EMAIL!
+                  </motion.div>
+                )}
+              </div>
+
+              {/* LinkedIn item */}
+              <a 
+                href={PROFILE.linkedin} 
+                target="_blank" 
+                rel="noreferrer"
+                className="flex items-center gap-4 group cursor-pointer"
+              >
+                <div className="w-14 h-14 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-center text-[#3b82f6] group-hover:bg-[#3b82f6] group-hover:text-white group-hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] transition-all duration-300 shrink-0">
+                  <Linkedin size={22} />
+                </div>
+                <div className="min-w-0">
+                  <div className="font-mono text-[9px] text-slate-400 tracking-widest uppercase mb-1">
+                    LinkedIn Network
+                  </div>
+                  <span className="font-display font-bold text-sm sm:text-[15px] text-white group-hover:text-[#3b82f6] transition-colors block truncate">
+                    vineethvyasabhattu
+                  </span>
+                </div>
+              </a>
+
+              {/* GitHub item */}
+              <a 
+                href={PROFILE.github} 
+                target="_blank" 
+                rel="noreferrer"
+                className="flex items-center gap-4 group cursor-pointer"
+              >
+                <div className="w-14 h-14 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-center text-[#3b82f6] group-hover:bg-[#3b82f6] group-hover:text-white group-hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] transition-all duration-300 shrink-0">
+                  <Github size={22} />
+                </div>
+                <div className="min-w-0">
+                  <div className="font-mono text-[9px] text-slate-400 tracking-widest uppercase mb-1">
+                    Repository Code
+                  </div>
+                  <span className="font-display font-bold text-sm sm:text-[15px] text-white group-hover:text-[#3b82f6] transition-colors block truncate">
+                    Vineethvyas123
+                  </span>
+                </div>
+              </a>
+
+              {/* Location item */}
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-center text-[#3b82f6] shrink-0">
+                  <MapPin size={22} />
+                </div>
+                <div className="min-w-0">
+                  <div className="font-mono text-[9px] text-slate-400 tracking-widest uppercase mb-1">
+                    Primary Hub
+                  </div>
+                  <span className="font-display font-bold text-sm sm:text-[15px] text-white block truncate">
+                    {PROFILE.location}
+                  </span>
                 </div>
               </div>
 
-              <div className="flex items-center space-x-6 group cursor-pointer">
-                <div className="p-5 rounded-2xl bg-paper border border-line group-hover:bg-[#0E0B3D] group-hover:text-paper transition-all duration-500 shrink-0">
-                  <Linkedin size={24} />
-                </div>
-                <div>
-                  <div className="label-caps mb-1">Connect</div>
-                  <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" className="text-xl sm:text-2xl font-bold tracking-tight hover:text-[#2563EB] transition-colors text-ink block">
-                    LinkedIn Profile
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-6 group cursor-pointer">
-                <div className="p-5 rounded-2xl bg-paper border border-line group-hover:bg-[#0E0B3D] group-hover:text-paper transition-all duration-500 shrink-0">
-                  <Github size={24} />
-                </div>
-                <div>
-                  <div className="label-caps mb-1">Repository</div>
-                  <a href={PROFILE.github} target="_blank" rel="noreferrer" className="text-xl sm:text-2xl font-bold tracking-tight hover:text-[#2563EB] transition-colors text-ink block">
-                    GitHub Profile
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-6">
-                <div className="p-5 rounded-2xl bg-paper border border-line shrink-0">
-                  <MapPin size={24} />
-                </div>
-                <div>
-                  <div className="label-caps mb-1">Base</div>
-                  <div className="text-xl sm:text-2xl font-bold tracking-tight text-ink">{PROFILE.location}</div>
-                </div>
-              </div>
             </div>
           </div>
 
+          {/* RIGHT: Contact Form (42% / lg:col-span-5) */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="modern-card p-10 md:p-12 bg-paper/30 relative overflow-hidden"
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-5 card-glass p-8 md:p-10 bg-white/[0.01] border-white/5 relative overflow-hidden"
           >
             <div className="relative z-10">
-              <h3 className="text-2xl font-bold mb-8 tracking-tight text-[#0E0B3D]">Send a Message</h3>
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div className="space-y-3">
-                    <label className="label-caps">Name</label>
-                    <input type="text" className="w-full bg-white border border-line rounded-xl px-5 py-4 outline-none focus:border-[#2563EB] transition-colors text-ink font-medium text-sm" placeholder="Your name" />
+              <h3 className="text-xl font-display font-semibold text-white mb-6">
+                Send a Message
+              </h3>
+
+              <form onSubmit={handleFormSubmit} className="space-y-5">
+                
+                {/* Name + Email side by side layout */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label className="font-mono text-[9px] tracking-widest text-slate-400 uppercase block">
+                      Name
+                    </label>
+                    <input 
+                      type="text" 
+                      value={formState.name}
+                      onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                      required
+                      className="w-full bg-[#05050c] border border-white/10 rounded-lg px-4 py-3 outline-none text-white font-sans text-sm focus:border-[#3b82f6] focus:shadow-[0_0_15px_rgba(59,130,246,0.25)] transition-all" 
+                      placeholder="Your name" 
+                    />
                   </div>
-                  <div className="space-y-3">
-                    <label className="label-caps">Email</label>
-                    <input type="email" className="w-full bg-white border border-line rounded-xl px-5 py-4 outline-none focus:border-[#2563EB] transition-colors text-ink font-medium text-sm" placeholder="your@email.com" />
+                  <div className="space-y-1.5">
+                    <label className="font-mono text-[9px] tracking-widest text-[#8888a0] uppercase block">
+                      Email
+                    </label>
+                    <input 
+                      type="email" 
+                      value={formState.email}
+                      onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                      required
+                      className="w-full bg-[#05050c] border border-white/10 rounded-lg px-4 py-3 outline-none text-white font-sans text-sm focus:border-[#3b82f6] focus:shadow-[0_0_15px_rgba(59,130,246,0.25)] transition-all" 
+                      placeholder="your@email.com" 
+                    />
                   </div>
                 </div>
-                <div className="space-y-3">
-                  <label className="label-caps">Inquiry Type</label>
-                  <div className="relative">
-                    <select className="w-full bg-white border border-line rounded-xl px-5 py-4 outline-none focus:border-[#2563EB] transition-colors appearance-none text-ink font-medium text-sm">
-                      <option>Consulting</option>
-                      <option>Agentic AI Systems</option>
-                      <option>Enterprise BPM Optimization</option>
-                      <option>General Message</option>
-                    </select>
-                    <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none opacity-40">
-                      <ArrowUp size={16} className="rotate-180" />
-                    </div>
-                  </div>
+
+                <div className="space-y-1.5">
+                  <label className="font-mono text-[9px] tracking-widest text-slate-400 uppercase block">
+                    Inquiry Type
+                  </label>
+                  <select 
+                    value={formState.inquiry}
+                    onChange={(e) => setFormState({ ...formState, inquiry: e.target.value })}
+                    className="w-full bg-[#05050c] border border-white/10 rounded-lg px-4 py-3 outline-none text-white font-sans text-sm focus:border-[#3b82f6] transition-colors appearance-none"
+                  >
+                    <option value="Consulting">Consulting</option>
+                    <option value="Agentic AI Systems">Agentic AI Systems</option>
+                    <option value="Enterprise BPM Optimization">Enterprise BPM Optimization</option>
+                    <option value="General Message">General Message</option>
+                  </select>
                 </div>
-                <div className="space-y-3">
-                  <label className="label-caps">Message</label>
-                  <textarea rows={4} className="w-full bg-white border border-line rounded-xl px-5 py-4 outline-none focus:border-[#2563EB] transition-colors resize-none text-ink font-medium text-sm" placeholder="How can I help you?"></textarea>
+
+                <div className="space-y-1.5">
+                  <label className="font-mono text-[9px] tracking-widest text-slate-400 uppercase block">
+                    Message
+                  </label>
+                  <textarea 
+                    rows={4} 
+                    value={formState.message}
+                    onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                    required
+                    className="w-full bg-[#05050c] border border-white/10 rounded-lg px-4 py-3 outline-none text-white font-sans text-sm focus:border-[#3b82f6] focus:shadow-[0_0_15px_rgba(59,130,246,0.25)] transition-all resize-none" 
+                    placeholder="How can I help you?"
+                  />
                 </div>
-                <button className="btn-primary w-full flex items-center justify-center space-x-3 text-xs uppercase tracking-widest font-bold group">
-                  <span>Send Message</span>
-                  <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </button>
+
+                {/* Submit button: full-width cobalt pill */}
+                <motion.button 
+                  type="submit"
+                  whileHover={{ scale: 1.01, filter: "brightness(1.1)" }}
+                  whileTap={{ scale: 0.99 }}
+                  disabled={isSubmitting}
+                  className="w-full flex items-center justify-center gap-2 bg-[#3b82f6] text-white py-3.5 rounded-full font-display text-xs font-bold uppercase tracking-widest hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transition-all duration-300 shrink-0"
+                >
+                  {isSubmitting ? (
+                    // Spinner logic
+                    <svg className="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                    </svg>
+                  ) : (
+                    <>
+                      <span>SEND MESSAGE</span>
+                      <Send size={15} />
+                    </>
+                  )}
+                </motion.button>
+
+                {submitSuccess && (
+                  <motion.p 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-xs text-emerald-400 font-mono text-center mt-2"
+                  >
+                    🚀 Message submitted successfully helper!
+                  </motion.p>
+                )}
+
               </form>
             </div>
           </motion.div>
+
         </div>
       </div>
 
-      {/* Full-width premium dark footer */}
-      <footer className="w-full bg-ink text-white py-16 border-t border-white/5 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-12 items-start">
+      {/* FOOTER: Background #020204 (deepest dark) with 1px border grid */}
+      <footer className="w-full bg-[#020204] text-white py-16 border-t border-white/5 relative z-10 select-none">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
           
-          {/* Brand and tagline */}
+          {/* Column 1: Monogram brand logo label */}
           <div className="md:col-span-5 flex flex-col items-center md:items-start text-center md:text-left">
-            <div className="text-lg sm:text-xl font-sans font-extrabold tracking-tight mb-3 uppercase text-white">
-              VINEETH KUMAR VYASABHATTU<span className="text-[#2563EB]">.</span>
+            <div className="font-display font-bold text-lg leading-none tracking-[0.08em] uppercase text-white mb-2">
+              VINEETH KUMAR VYASABHATTU<span className="text-[#3b82f6]">.</span>
             </div>
-            <p className="text-white/60 text-sm font-medium leading-relaxed max-w-sm mb-4">
+            <p className="font-mono text-xs text-slate-400 max-w-sm mb-4 leading-relaxed">
               Bridging Legacy Enterprises into Autonomous AI
             </p>
-            <p className="text-white/30 text-xs font-mono uppercase tracking-widest">© 2026 {PROFILE.name}</p>
+            <p className="text-slate-400/40 text-[10px] font-mono uppercase tracking-widest">
+              © 2026 {PROFILE.name}
+            </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Column 2: Quick links split */}
           <div className="md:col-span-4 flex flex-col items-center md:items-start w-full">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#2563EB] mb-4">Quick Links</h4>
-            <div className="grid grid-cols-2 gap-x-8 gap-y-3 text-center md:text-left w-full max-w-xs">
-              <a href="#" className="text-white/50 hover:text-white text-xs font-bold uppercase tracking-wider transition-colors">Home</a>
-              <a href="#about" className="text-white/50 hover:text-white text-xs font-bold uppercase tracking-wider transition-colors">About</a>
-              <a href="#expertise" className="text-white/50 hover:text-white text-xs font-bold uppercase tracking-wider transition-colors">Expertise</a>
-              <a href="#experience" className="text-white/50 hover:text-white text-xs font-bold uppercase tracking-wider transition-colors">History</a>
-              <a href="#projects" className="text-white/50 hover:text-white text-xs font-bold uppercase tracking-wider transition-colors">Projects</a>
-              <a href="#stack" className="text-white/50 hover:text-white text-xs font-bold uppercase tracking-wider transition-colors">Stack</a>
+            <h4 className="font-mono text-[10px] uppercase tracking-widest text-[#3b82f6] mb-4 font-bold">
+              QUICK LINKS
+            </h4>
+            <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-center md:text-left w-full max-w-xs font-mono text-xs">
+              <a href="#" className="text-slate-400 hover:text-white transition-colors">Home</a>
+              <a href="#about" className="text-slate-400 hover:text-white transition-colors">About</a>
+              <a href="#expertise" className="text-slate-400 hover:text-white transition-colors">Expertise</a>
+              <a href="#experience" className="text-slate-400 hover:text-white transition-colors">History</a>
+              <a href="#projects" className="text-slate-400 hover:text-[#3b82f6] transition-colors">Projects</a>
+              <a href="#stack" className="text-slate-400 hover:text-[#3b82f6] transition-colors">Stack</a>
             </div>
           </div>
 
-          {/* Controls */}
+          {/* Column 3: Social connectors + back-to-top */}
           <div className="md:col-span-3 flex flex-col items-center md:items-end justify-between self-stretch">
-            <div className="flex space-x-4 mb-8 md:mb-0">
-              <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" className="p-3 rounded-xl bg-white/5 border border-white/10 hover:border-[#2563EB] hover:text-[#2563EB] text-white transition-all">
-                <Linkedin size={18} />
+            <div className="flex space-x-3 mb-6 md:mb-0">
+              <a 
+                href={PROFILE.linkedin} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="w-9 h-9 rounded-full bg-white/[0.02] border border-white/10 flex items-center justify-center text-slate-400 hover:text-[#3b82f6] hover:border-[#3b82f6] transition-all"
+              >
+                <Linkedin size={15} />
               </a>
-              <a href={PROFILE.github} target="_blank" rel="noreferrer" className="p-3 rounded-xl bg-white/5 border border-white/10 hover:border-[#2563EB] hover:text-[#2563EB] text-white transition-all">
-                <Github size={18} />
+              <a 
+                href={PROFILE.github} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="w-9 h-9 rounded-full bg-white/[0.02] border border-white/10 flex items-center justify-center text-slate-400 hover:text-[#3b82f6] hover:border-[#3b82f6] transition-all"
+              >
+                <Github size={15} />
               </a>
-              <a href={`mailto:${PROFILE.email}`} className="p-3 rounded-xl bg-white/5 border border-white/10 hover:border-[#2563EB] hover:text-[#2563EB] text-white transition-all">
-                <Mail size={18} />
+              <a 
+                href={`mailto:${PROFILE.email}`} 
+                className="w-9 h-9 rounded-full bg-white/[0.02] border border-white/10 flex items-center justify-center text-slate-400 hover:text-[#3b82f6] hover:border-[#3b82f6] transition-all"
+              >
+                <Mail size={15} />
               </a>
             </div>
 
+            {/* Back to top bounce action icon button */}
             <button 
               onClick={scrollToTop}
-              aria-label="Scroll to top of the page"
-              className="p-4 rounded-xl border border-white/10 bg-white/5 hover:border-[#2563EB] hover:text-white transition-all group mt-auto"
+              className="w-10 h-10 rounded-full bg-[#3b82f6] hover:bg-[#2563eb] flex items-center justify-center text-white shadow-lg shadow-[#3b82f6]/20 cursor-pointer group mt-auto"
+              aria-label="Back to top"
             >
-              <ArrowUp size={20} className="group-hover:-translate-y-1 transition-transform text-[#2563EB]" />
+              <ArrowUp size={16} className="group-hover:-translate-y-1 transition-transform" />
             </button>
           </div>
 
         </div>
       </footer>
-    </motion.section>
+    </section>
   );
 }
