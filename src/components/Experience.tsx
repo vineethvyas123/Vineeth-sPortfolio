@@ -13,7 +13,7 @@ export default function Experience() {
       id="experience" 
       className="bg-[#030307] py-12 relative overflow-hidden text-white"
     >
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
         
         {/* Section Header */}
         <div className="mb-8">
@@ -31,7 +31,7 @@ export default function Experience() {
         </div>
 
         {/* Timeline single-column rail wrapper */}
-        <div className="relative pl-8 md:pl-12 border-l border-gradient-to-b from-[#3b82f6] to-transparent border-white/5">
+        <div className="max-w-4xl relative pl-8 md:pl-12 border-l border-gradient-to-b from-[#3b82f6] to-transparent border-white/5">
           {/* Custom continuous vertical timeline rail line */}
           <div className="absolute left-0 top-3 bottom-0 w-[2px] bg-gradient-to-b from-[#3b82f6] via-[#3b82f6]/50 to-transparent pointer-events-none" />
 

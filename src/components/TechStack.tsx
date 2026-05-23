@@ -91,12 +91,12 @@ export default function TechStack() {
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Section Header */}
-        <div className="text-center mb-8">
+        <div className="mb-8">
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="section-label mb-4 justify-center"
+            className="section-label mb-4"
           >
             Toolkit
           </motion.div>
