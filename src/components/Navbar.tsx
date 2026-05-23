@@ -48,6 +48,7 @@ export default function Navbar() {
     { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
     { name: "Stack", href: "#stack" },
+    { name: "Education", href: "#education" },
     { name: "Writing", href: "#writing" },
     { name: "Contact", href: "#contact"}
   ];

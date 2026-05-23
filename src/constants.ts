@@ -47,6 +47,7 @@ export const EXPERIENCE = [
     role: "PEGA Manager",
     period: "Apr 2022 - Present",
     location: "Bangalore, India",
+    metric: "↓ 45% OVERHEAD REDUCED",
     highlights: [
       "Leading end-to-end delivery of high-impact Pega projects including JBSFinance and PAM (HK & UK).",
       "Orchestrating multi-disciplinary development teams and aligning technical roadmaps with executive stakeholder goals.",
@@ -58,6 +59,7 @@ export const EXPERIENCE = [
     role: "Project Lead - PAM HK",
     period: "Aug 2021 - Feb 2022",
     location: "Bangalore, India",
+    metric: "↓ 60% APPROVAL CYCLES",
     highlights: [
       "Architected an automated invoice processing application reducing manual approval cycles by 60%.",
       "Implemented intelligent bulk processing logic for high-volume financial transactions coupled with Camunda-driven exception management.",
@@ -65,12 +67,25 @@ export const EXPERIENCE = [
   },
   {
     company: "Evoke Technologies",
-    role: "Senior Consultant",
+    role: "Technical Lead",
     period: "May 2019 - Aug 2021",
     location: "Hyderabad, India",
+    metric: "↓ 3X FASTER DELIVERY",
     highlights: [
       "Optimized complex pharmacovigilance workflows for Commonwealth Inc. using data-driven analytic evidence on Bonitasoft BPM and Java frameworks.",
       "Enhanced medical product safety surveillance by deploying unified process integration views on Camunda and Bonita BPM layouts.",
+    ],
+  },
+  {
+    company: "Hyster-Yale Inc. (via Evoke Technologies)",
+    role: "Technical Lead",
+    period: "Mar 2018 - Aug 2018",
+    location: "Portland, USA",
+    metric: "↓ DUAL SYSTEM SYNC",
+    highlights: [
+      "Designed and deployed the Change Order (CO) release process application to dynamically modify lift truck units based on direct customer requirements.",
+      "Implemented sophisticated multi-level approval workflows across separate manufacturing and production line business units.",
+      "Established secure transaction pipelines communicating with Hyster-Yale's internal CORE systems, ensuring perfect operational data synchronization.",
     ],
   },
 ];
@@ -97,6 +112,13 @@ export const PROJECTS = [
     impact: "Automated 80% of routine customer inquiries, allowing human agents to focus on complex cases.",
     link: "#",
   },
+  {
+    title: "Change Order Release Engine",
+    description: "A highly robust workflow and configuration management engine designed for Hyster-Yale's lift truck machinery units, coordinating approval checkpoints and executing synchronous CORE systems transactions.",
+    tech: ["Java", "BPM Engines", "Spring", "Oracle", "Tomcat"],
+    impact: "Authorized and synchronized safety-certified mechanical units with 100% data integrity.",
+    link: "#",
+  }
 ];
 
 export const TECH_STACK = {
@@ -140,3 +162,42 @@ export const BLOGS = [
     date: "Coming Soon",
   },
 ];
+
+export const EDUCATION = [
+  {
+    degree: "M.Tech – Software Engineering",
+    institution: "Kakatiya Institute of Technology and Science (KITS)",
+    location: "Warangal, India",
+    period: "2008 – 2010",
+    grade: "Grade: 79.4%"
+  },
+  {
+    degree: "DSSD – Diploma in System Software Development",
+    institution: "C-DAC",
+    location: "Hyderabad, India",
+    period: "2007",
+    grade: "Completed"
+  },
+  {
+    degree: "B.Tech – Computer Science & Engineering",
+    institution: "Mother Theresa College of Engineering & Technology (JNTU)",
+    location: "Peddapalli, India",
+    period: "2002 – 2006",
+    grade: "Grade: 61.44%"
+  },
+  {
+    degree: "BIE (10+2) – Maths, Physics & Chemistry",
+    institution: "Jayasree Junior College",
+    location: "Karimnagar, India",
+    period: "1999 – 2001",
+    grade: "Grade: 83.40%"
+  },
+  {
+    degree: "SSC (10th)",
+    institution: "Z.P. Secondary School, L.M.D Colony",
+    location: "Karimnagar, India",
+    period: "1998 – 1999",
+    grade: "Grade: 79.60%"
+  }
+];
+

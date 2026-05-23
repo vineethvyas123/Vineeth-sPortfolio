@@ -291,6 +291,8 @@ export default function Contact() {
               <a href="#experience" className="text-slate-400 hover:text-white transition-colors">History</a>
               <a href="#projects" className="text-slate-400 hover:text-[#3b82f6] transition-colors">Projects</a>
               <a href="#stack" className="text-slate-400 hover:text-[#3b82f6] transition-colors">Stack</a>
+              <a href="#education" className="text-slate-400 hover:text-[#3b82f6] transition-colors">Education</a>
+              <a href="#writing" className="text-slate-400 hover:text-[#3b82f6] transition-colors">Writing</a>
             </div>
           </div>
 

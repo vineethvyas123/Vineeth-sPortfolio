@@ -37,10 +37,7 @@ export default function Experience() {
 
           <div className="space-y-12">
             {EXPERIENCE.map((exp, index) => {
-              const outcomeMetric = 
-                index === 0 ? "↓ 45% OVERHEAD REDUCED" 
-                : index === 1 ? "↓ 60% APPROVAL CYCLES" 
-                : "↓ 3X FASTER DELIVERY";
+              const outcomeMetric = exp.metric || "↓ COGNITIVE AUTOMATION";
 
               return (
                 <div key={index} className="relative group">
